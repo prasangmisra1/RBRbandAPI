@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id="MainController" class="com.rbrband.main.MainController">
+   </bean>
+<!-- Initialization for data source -->
+   <bean id="dataSource" 
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+      <property name="url" value="jdbc:mysql://localhost:3306/rbrband"/>
+      <property name="username" value="root"/>
+      <property name="password" value="pm111991"/>
+   </bean>
+
+   <!-- Definition for UserJDBCTemplate bean -->
+   <bean id="UserJDBCTemplate" 
+      class="com.rbrband.dao.UserJDBCTemplate">
+      <property name="dataSource"  ref="dataSource" />    
+   </bean>
+</beans>
